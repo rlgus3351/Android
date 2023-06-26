@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,12 +21,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Lake Louise"/>
+        android:text="Lake Louise"
+        android:textStyle="bold" />
 
     <Button
+        android:id="@+id/nextbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="next Page"
-        android:id="@+id/nextBtn"></Button>
+        android:text="next Page"></Button>
 </LinearLayout>
