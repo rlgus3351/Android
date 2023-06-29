@@ -18,17 +18,6 @@ public class JoinActivity extends AppCompatActivity {
 
     Button submitBtn;
 
-    SQLiteDatabase db;
-    static final String DB_NAME ="database";
-    static final String TABLE_NAME = "user";
-
-    protected void createDatabase(){
-        db = openOrCreateDatabase(
-                DB_NAME, // 데이터 베이스의 이름
-                MODE_PRIVATE, // 다른 앱에서의 접근 가능 범위
-                null //
-        );
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
