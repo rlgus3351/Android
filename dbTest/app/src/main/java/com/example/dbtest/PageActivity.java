@@ -39,7 +39,7 @@ public class PageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.v("HOMEBUTTON","HOMEBUTTON CLICK");
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Distrain1Activity.class);
                 startActivity(intent);
             }
         });
@@ -48,7 +48,7 @@ public class PageActivity extends AppCompatActivity {
         distrain2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Distrain2Activity.class);
                 startActivity(intent);
             }
         });
