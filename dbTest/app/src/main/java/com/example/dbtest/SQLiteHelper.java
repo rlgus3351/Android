@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.sql.Date;
+
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     //------------------------------------- DATABASE SETTING -------------------------------------//
@@ -19,6 +21,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_PW = "pw";
     public static final String COLUMN_NAME = "name";
+
+    public static final String COLUMN_DATE = "date";
     private static String DB_PATH = "";
     // TODO : assets 폴더에 있는 DB명 또는 별도의 데이터베이스 파일이름
 
@@ -27,7 +31,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             + TABLE_NAME + "(" + COLUMN_IDX + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_ID + " TEXT, "
             + COLUMN_PW + " TEXT, "
-            + COLUMN_NAME + " TEXT);";
+            + COLUMN_NAME + " TEXT,"
+            + COLUMN_DATE + " TIMESTAMP DEFAULT (datetime('now','+9 hours')));";
 
     //------------------------------------- SQLite Helper ----------------------------------------//
 
@@ -55,12 +60,19 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     //------------------------------------- INSERT DATA -----------------------------------------//
     public boolean insertData(String id, String name, String pw){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_ID,id);
-        contentValues.put(COLUMN_NAME,name);
-        contentValues.put(COLUMN_PW,pw);
-        long result = db.insert(TABLE_NAME, null, contentValues);
+        long result = -1;
+        Log.v("id" ,"value : " + id);
+        Log.v("pw" ,"value : " + pw);
+        Log.v("name" ,"value : " + name);
+
+        if((id != null) & (name != null) & (pw != null)){
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(COLUMN_ID,id);
+            contentValues.put(COLUMN_NAME,name);
+            contentValues.put(COLUMN_PW,pw);
+            result = db.insert(TABLE_NAME, null, contentValues);    
+        }
         if (result == -1){
             return false;
         }else{
@@ -69,8 +81,39 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
     //------------------------------------- LOGIN CHECK DATA -------------------------------------//
     public boolean selectData(String id, String pw){
+        Cursor cursor = null;
+        int row = 0;
+        if ((id != null) & (pw != null)){
+            SQLiteDatabase db = this.getWritableDatabase();
+            String sql = "select * from "
+                    + TABLE_NAME +
+                    " where "+ COLUMN_ID + " = '" + id + "' and " + COLUMN_PW + " = '" + pw +"'";
+            Log.v("SQL check","SQL : " + sql);
+            cursor = db.rawQuery(sql,null);
+            Log.v("Count check","COUNT : " + cursor.getCount());
+            row = cursor.getCount();
+        }
+        if (row >0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+    //------------------------------------- CLOSE DATABASE ---------------------------------------//
+    public void closeDB(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String sql = "select * from " + TABLE_NAME + " where "+ COLUMN_ID + " = '" + id + "' and " + COLUMN_PW + " = '" + pw +"'";
+        db.close();
+    }
+
+    public SQLiteDatabase openDB(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db;
+    }
+
+    public boolean selectOne(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "select * from " + TABLE_NAME + " where "+ COLUMN_ID + " = '" + "test" + "' and " + COLUMN_PW + " = '" + "test" +"'";
         Cursor cursor = db.rawQuery(sql,null);
         if (cursor != null){
             return true;
@@ -82,6 +125,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
 
 
-
 }
+
 

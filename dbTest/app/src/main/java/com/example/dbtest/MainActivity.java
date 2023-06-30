@@ -3,9 +3,7 @@ package com.example.dbtest;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,26 +25,55 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        et_id = findViewById(R.id.et_id);
-        et_pass = findViewById(R.id.et_pass);
-        //---------------------------------------DATABASE-----------------------------------------//
+
+        //--------------------------------------- DATABASE ---------------------------------------//
         mSQLiteHelper = new SQLiteHelper(this);
 
-        //---------------------------------------LOGIN CLICK--------------------------------------//
+        //--------------------------------------- SELECTTOR --------------------------------------//
+        et_id = findViewById(R.id.et_id);
+        et_pass = findViewById(R.id.et_pass);
         btn_login = (Button) findViewById(R.id.btn_login);
+
+        //---------------------------------------LOGIN CLICK START--------------------------------//
         btn_login.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                boolean isInserted = mSQLiteHelper.insertData(et_id.getText().toString(), "test", et_pass.getText().toString());
-//                boolean isInserted = mSQLiteHelper.selectData(et_id.getText().toString(), et_pass.getText().toString());
-                if(isInserted){
-                    Toast.makeText(MainActivity.this, "Data Inserted",Toast.LENGTH_LONG).show();
+                boolean isInserted = false;
+                // -----------------------------------DATA CHECK----------------------------------//
+                if(et_id.getText().toString() == null){
+                    Toast.makeText(MainActivity.this,
+                            "아이디를 입력해주세요",Toast.LENGTH_LONG).show();
+
                 }else{
-                    Toast.makeText(MainActivity.this, "Data not Inserted",Toast.LENGTH_LONG).show();
+                    if(et_pass.getText().toString() == null){
+                        Toast.makeText(MainActivity.this,
+                                "비밀 번호를 입력해주세요",Toast.LENGTH_LONG).show();
+                    }else{
+                        isInserted = mSQLiteHelper.selectData(
+                                et_id.getText().toString(),
+                                et_pass.getText().toString());
+                    }
+                }
+                // -----------------------------------DATA INSERT---------------------------------//
+
+                if(isInserted){
+                    // -------------------------------DATA INSERT SUCCESS-------------------------//
+                    Toast.makeText(MainActivity.this,
+                            "Login Success",Toast.LENGTH_LONG).show();
+                    Log.v("Login Success","Success");
+                    mSQLiteHelper.closeDB();
+                    Intent intent = new Intent(getApplicationContext(), PageActivity.class);
+                    startActivity(intent);
+                }else{
+                    // -------------------------------DATA INSERT FAIL-------------------------//
+                    Toast.makeText(MainActivity.this,
+                            "Login Fail",Toast.LENGTH_LONG).show();
+                    Log.v("Login Fail","Fail");
                 }
             }
         });
-
+        //---------------------------------------LOGIN CLICK END----------------------------------//
 
 
         //---------------------------------------REGISTER CLICK------------------------------------//
