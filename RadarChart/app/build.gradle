@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.piechart'
+    namespace 'com.example.radarchart'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.piechart"
+        applicationId "com.example.radarchart"
         minSdk 29
         targetSdk 33
         versionCode 1

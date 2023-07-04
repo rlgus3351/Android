@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pieChart"
+    <com.github.mikephil.charting.charts.RadarChart
+        android:id="@+id/radar_Chart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.github.mikephil.charting.charts.PieChart>
+        android:layout_height="match_parent"></com.github.mikephil.charting.charts.RadarChart>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
