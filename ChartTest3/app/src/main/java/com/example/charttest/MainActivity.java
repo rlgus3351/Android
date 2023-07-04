@@ -6,12 +6,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LegendEntry;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ViewPortHandler;
@@ -40,10 +44,21 @@ public class MainActivity extends AppCompatActivity {
         dataSets.add(lineDataSet2);
 
         LineData data = new LineData(dataSets);
+
+        //----------------------------------- ALL DATA FORMATTING --------------------------------//
         data.setValueFormatter(new MyValueFormatter());
 
         mpLineChart.setData(data);
         mpLineChart.invalidate();
+
+        //------------------------------- AXIS DATA FORMATTING -----------------------------------//
+
+        XAxis xAxis = mpLineChart.getXAxis();
+        YAxis yAxisLeft = mpLineChart.getAxisLeft();
+        YAxis yAxisRight = mpLineChart.getAxisRight();
+
+        xAxis.setValueFormatter(new MyAxisValueFormatter());
+        yAxisLeft.setValueFormatter((new MyAxisValueFormatter()));
         //----------------------------------- DISPLAY SETTINGS  ----------------------------------//
 //        mpLineChart.setNoDataText("No Data");
 //        mpLineChart.setNoDataTextColor(Color.RED);
@@ -52,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
         mpLineChart.setDrawBorders(true);
         mpLineChart.setBorderColor(Color.RED);
         mpLineChart.setBorderWidth(5);
+
+
+
 
 
         //------------------------------- DESCRIPTION SETTINGS  ----------------------------------//
@@ -135,4 +153,14 @@ public class MainActivity extends AppCompatActivity {
             return value + " $";
         }
     }
+    //--------------------------------- FORMATTING AXIS VALUES -----------------------------------//
+    private class MyAxisValueFormatter implements IAxisValueFormatter{
+
+        @Override
+        public String getFormattedValue(float value, AxisBase axis) {
+            axis.setLabelCount(3,true);
+            return value + " $";
+        }
+    }
+
 }
