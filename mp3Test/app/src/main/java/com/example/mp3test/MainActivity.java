@@ -6,6 +6,7 @@ import android.media.MediaParser;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -40,12 +41,16 @@ public class MainActivity extends AppCompatActivity {
         btn_play = findViewById(R.id.btn_play);
         btn_check = findViewById(R.id.btn_check);
         btn_none = findViewById(R.id.btn_none);
-
+        //----------------------------------------------------------------------------------------//
+        String pkgName = this.getPackageName();
+        int tmpId = getApplication().getResources().getIdentifier("music","raw",pkgName);
+        //----------------------------------------------------------------------------------------//
+        Log.v("id Test", "value : " + tmpId);
         // 재생 버튼 눌렀을 때
         btn_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.music);
+                mediaPlayer = MediaPlayer.create(MainActivity.this, tmpId);
                 mediaPlayer.start();
 
             }
