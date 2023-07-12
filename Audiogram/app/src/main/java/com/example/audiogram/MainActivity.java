@@ -82,10 +82,11 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Entry> leftValues(){
         ArrayList<Entry> leftData = new ArrayList<Entry>();
-        leftData.add(new Entry(500,-20));
-        leftData.add(new Entry(1000,-30));
-        leftData.add(new Entry(2000,-40));
-        leftData.add(new Entry(3000,-50));
+        leftData.add(new Entry(125,-20));
+        leftData.add(new Entry(250,-20));
+        leftData.add(new Entry(500,-30));
+        leftData.add(new Entry(1000,-40));
+        leftData.add(new Entry(2000,-50));
         leftData.add(new Entry(4000,-60));
         leftData.add(new Entry(8000,-70));
         return leftData;
@@ -93,12 +94,13 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Entry> rightValues(){
         ArrayList<Entry> rightData = new ArrayList<Entry>();
-        rightData.add(new Entry(500,-30));
-        rightData.add(new Entry(1000,-40));
-        rightData.add(new Entry(2000,-48));
-        rightData.add(new Entry(3000,-60));
-        rightData.add(new Entry(4000,-70));
-        rightData.add(new Entry(8000,-80));
+        rightData.add(new Entry(125,-30));
+        rightData.add(new Entry(250,-40));
+        rightData.add(new Entry(500,-50));
+        rightData.add(new Entry(1000,-60));
+        rightData.add(new Entry(2000,-70));
+        rightData.add(new Entry(4000,-80));
+        rightData.add(new Entry(8000,-90));
         return rightData;
     }
     //------------------------------------ AUDIOGRAM Y LEFT AXIS ---------------------------------//
