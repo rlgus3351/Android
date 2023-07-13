@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/Auditory"
     tools:context=".Distrain2Activity">
 
     <TextView
@@ -53,7 +54,8 @@
         android:id="@+id/distrain2playstop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
         android:layout_marginBottom="24dp"
         android:text="재생/멈춤"
         app:layout_constraintBottom_toTopOf="@+id/distrain2btn3"
@@ -69,6 +71,9 @@
         android:layout_marginBottom="175dp"
         android:text="1"
         android:textSize="25dp"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/distrain2playstop"
         app:layout_constraintStart_toStartOf="@+id/distrain2Content2"
@@ -78,7 +83,8 @@
         android:id="@+id/distrain2btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
         android:layout_marginBottom="151dp"
         android:text="2"
         android:textSize="25dp"
@@ -94,6 +100,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="175dp"
         android:text="3"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/distrain2Content2"

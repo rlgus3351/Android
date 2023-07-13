@@ -41,19 +41,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 boolean isInserted = false;
                 // -----------------------------------DATA CHECK----------------------------------//
-                if(et_id.getText().toString() == null){
+                if(et_pass.getText().toString() == null){
                     Toast.makeText(MainActivity.this,
-                            "아이디를 입력해주세요",Toast.LENGTH_LONG).show();
-
+                            "비밀 번호를 입력해주세요",Toast.LENGTH_LONG).show();
                 }else{
-                    if(et_pass.getText().toString() == null){
-                        Toast.makeText(MainActivity.this,
-                                "비밀 번호를 입력해주세요",Toast.LENGTH_LONG).show();
-                    }else{
-                        isInserted = mSQLiteHelper.selectData(
-                                et_id.getText().toString(),
-                                et_pass.getText().toString());
-                    }
+                    isInserted = mSQLiteHelper.selectData(
+                            et_id.getText().toString(),
+                            et_pass.getText().toString());
                 }
                 // -----------------------------------DATA INSERT---------------------------------//
 

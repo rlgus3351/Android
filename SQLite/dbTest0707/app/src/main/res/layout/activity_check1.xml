@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/Auditory"
     tools:context=".Distrain2Activity">
 
     <TextView
@@ -14,6 +15,7 @@
         android:layout_marginTop="84dp"
         android:text="확인 훈련 1"
         android:textSize="30dp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,6 +29,7 @@
         android:layout_marginTop="112dp"
         android:text="검사를 시작하겠습니다."
         android:textSize="30dp"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/checktrain1Title"
         app:layout_constraintLeft_toLeftOf="@+id/checktrain1Title"
         app:layout_constraintRight_toRightOf="@+id/checktrain1Title"
@@ -40,6 +43,7 @@
         android:layout_gravity="center"
         android:text="다른 소리가 무엇인가요?"
         android:textSize="30dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/checktrain1playstop"
         app:layout_constraintEnd_toEndOf="@+id/checktrain1Content1"
         app:layout_constraintHorizontal_bias="0.571"
@@ -52,8 +56,9 @@
         android:id="@+id/checktrain1playstop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:background="@drawable/custom_button"
         android:layout_marginBottom="24dp"
+        android:textColor="@color/white"
         android:text="재생/멈춤"
         app:layout_constraintBottom_toTopOf="@+id/checktrain1btn1"
         app:layout_constraintEnd_toEndOf="@+id/checktrain1Content2"
@@ -62,10 +67,12 @@
 
     <Button
         android:id="@+id/checktrain1btn1"
+        android:background="@drawable/custom_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="175dp"
         android:text="1"
+        android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/checktrain1playstop"
@@ -76,9 +83,10 @@
         android:id="@+id/checktrain1btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:background="@drawable/custom_button"
         android:layout_marginBottom="151dp"
         android:text="2"
+        android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/checktrain1Content2"
@@ -87,11 +95,14 @@
         tools:ignore="MissingConstraints"></Button>
 
     <Button
+        android:background="@drawable/custom_button"
+
         android:id="@+id/checktrain1btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="175dp"
         android:text="3"
+        android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/checktrain1Content2"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/Auditory"
     tools:context=".Distrain2Activity">
 
     <TextView
@@ -68,7 +69,8 @@
         android:id="@+id/checktrain2playstop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
         android:layout_marginBottom="16dp"
         android:text="재생/멈춤"
         app:layout_constraintBottom_toTopOf="@+id/checktrain2Edit"
@@ -94,7 +96,8 @@
         android:id="@+id/checktrain2submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
         android:layout_marginBottom="124dp"
         android:text="확인"
         app:layout_constraintBottom_toBottomOf="parent"

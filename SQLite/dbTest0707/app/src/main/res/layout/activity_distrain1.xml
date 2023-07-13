@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/Auditory"
     tools:context=".Distrain1Activity">
 
     <TextView
+
         android:id="@+id/distrain1Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +42,7 @@
         android:layout_gravity="center"
         android:text="세 소리가 모두 같나요?"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/d1PlayStop"
         app:layout_constraintEnd_toEndOf="@+id/distrain1Content1"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/distrain1Content1"
@@ -49,11 +51,14 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/d1PlayStop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="264dp"
         android:text="재생/멈춤"
+        android:textSize="15dp"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/distrain1Content2"
         app:layout_constraintHorizontal_bias="0.494"
@@ -61,28 +66,63 @@
         tools:ignore="MissingConstraints"></Button>
 
     <Button
+        android:id="@+id/d1o"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="175dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/custom_button"
         android:text="O"
+        android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintEnd_toStartOf="@+id/d1PlayStop"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/distrain1Content2"
         tools:ignore="MissingConstraints"></Button>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/dis1submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="175dp"
+        android:text="완료"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        android:background="@drawable/custom_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/d1x"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/d1o"
+        app:layout_constraintTop_toBottomOf="@+id/d1PlayStop"
+        app:layout_constraintVertical_bias="0.437"
+        tools:ignore="MissingConstraints"></Button>
+
+    <Button
+        android:id="@+id/d1x"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
         android:text="X"
         android:textSize="25dp"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/distrain1Content2"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/d1PlayStop"
         tools:ignore="MissingConstraints"></Button>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="204dp"
+        android:layout_height="22dp"
+        android:progressDrawable="@drawable/custom_progressbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/d1PlayStop"
+        app:layout_constraintVertical_bias="0.161" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

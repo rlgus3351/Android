@@ -15,6 +15,8 @@ public class PageActivity extends AppCompatActivity {
     Button distrain2;
     Button checktrain1;
     Button checktrain2;
+
+    Button result;
     //--------------------------------- HOME BUTTON CLICK EVENT ----------------------------------//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,15 @@ public class PageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Check2Activity.class);
+                startActivity(intent);
+            }
+        });
+        //---------------------------- RESULT BUTTON CLICK EVENT ---------------------------------//
+        result = (Button) findViewById(R.id.resultBtn);
+        result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),ResultActivity.class);
                 startActivity(intent);
             }
         });
