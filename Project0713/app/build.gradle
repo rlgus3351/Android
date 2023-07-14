@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.dbtest0707'
+    namespace 'com.example.project0713'
     compileSdk 33
 
     defaultConfig {
-        applicationId 'com.example.dbtest0707'
+        applicationId "com.example.project0713"
         minSdk 33
         targetSdk 33
         versionCode 1
@@ -26,13 +26,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    sourceSets {
-        main {
-            assets {
-                srcDirs 'src\\main\\assets'
-            }
-        }
-    }
 }
 
 dependencies {
@@ -43,5 +36,4 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 }

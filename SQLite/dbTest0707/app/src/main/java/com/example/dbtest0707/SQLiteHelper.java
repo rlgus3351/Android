@@ -2,16 +2,24 @@ package com.example.dbtest0707;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     //------------------------------------- DATABASE SETTING -------------------------------------//
     private static final String DATABASE_NAME = "bgr.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     //------------------------------------- TABLE SETTING ----------------------------------------//
     public static final String TABLE_NAME = "userInfo";
     public static final String COLUMN_IDX = "idX";
@@ -22,7 +30,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DATE = "date";
     private static String DB_PATH = "";
     // TODO : assets 폴더에 있는 DB명 또는 별도의 데이터베이스 파일이름
-
+    private Context mContext;
     private static SQLiteDatabase mDataBase;
     private static final String DATABASE_CREATE_TABLE = "create table "
             + TABLE_NAME + "(" + COLUMN_IDX + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -34,10 +42,44 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     //------------------------------------- SQLite Helper ----------------------------------------//
 
     public SQLiteHelper(Context context){
-
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
+        this.mContext = context;
+        dataBaseCheck();
     }
+
+    private void dataBaseCheck(){
+        File dbFile = new File(DB_PATH + DATABASE_NAME);
+        if(!dbFile.exists()){
+            dpCopy();
+            Log.v("DataBaseHelper","DataBase is Copied");
+        }
+    }
+    private void dpCopy(){
+        try{
+            File folder = new File(DB_PATH);
+            if(!folder.exists()){
+                folder.mkdir();
+            }
+
+            InputStream inputStream = mContext.getAssets().open(DATABASE_NAME);
+            String out_filename = DB_PATH + DATABASE_NAME;
+            OutputStream outputStream = new FileOutputStream(out_filename);
+            byte[] mBuffer = new byte[1024];
+            int mLength;
+            while((mLength = inputStream.read(mBuffer)) > 0){
+                outputStream.write(mBuffer,0,mLength);
+            }
+            outputStream.flush();
+            outputStream.close();
+            inputStream.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 
     //------------------------------------- CREATE TABLE -----------------------------------------//
 
@@ -68,11 +110,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             contentValues.put(COLUMN_ID,id);
             contentValues.put(COLUMN_NAME,name);
             contentValues.put(COLUMN_PW,pw);
-            result = db.insert(TABLE_NAME, null, contentValues);    
+            result = db.insert("userInfo", null, contentValues);
         }
         if (result == -1){
+            Log.v("userInfo insert : " ,":" + result);
+            Log.v("userInfo insert : " ,"fail");
             return false;
         }else{
+            Log.v("userInfo insert : " ,"true");
             return true;
         }
     }
@@ -83,8 +128,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         if ((id != null) & (pw != null)){
             SQLiteDatabase db = this.getWritableDatabase();
             String sql = "select * from "
-                    + TABLE_NAME +
-                    " where "+ COLUMN_ID + " = '" + id + "' and " + COLUMN_PW + " = '" + pw +"'";
+                    + "userInfo" +
+                    " where "+ "id" + " = '" + id + "' and " + "pw" + " = '" + pw +"'";
             Log.v("SQL check","SQL : " + sql);
             cursor = db.rawQuery(sql,null);
             Log.v("Count check","COUNT : " + cursor.getCount());
@@ -119,8 +164,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
 
     }
-
-
 
 }
 

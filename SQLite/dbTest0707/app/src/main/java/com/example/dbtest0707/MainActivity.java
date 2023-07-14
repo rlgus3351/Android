@@ -18,13 +18,11 @@ public class MainActivity extends AppCompatActivity {
     Button btn_register;
     SQLiteHelper mSQLiteHelper;
 
-
-    public static final String TABLE_NAME = "userInfo";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.v("packageName","value : " + getPackageName());
 
         //--------------------------------------- DATABASE ---------------------------------------//
         mSQLiteHelper = new SQLiteHelper(this);

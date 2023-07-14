@@ -7,6 +7,8 @@
     style="@style/Auditory"
     tools:context=".Distrain2Activity">
 
+
+
     <TextView
         android:id="@+id/checktrain1Title"
         android:layout_width="wrap_content"
