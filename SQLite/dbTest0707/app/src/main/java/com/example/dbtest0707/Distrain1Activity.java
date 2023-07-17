@@ -28,12 +28,19 @@ public class Distrain1Activity extends AppCompatActivity {
     ArrayList<String> answer = new ArrayList<>();
     int count = 1;
     MediaPlayer mediaPlayer;
+
+    SQLiteHelper mSQLiteHelper;
+
     int i = 0;
     boolean visiblePb = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_distrain1);
+        //-------------------------------- Music Info Settings ---------------------------------//
+        mSQLiteHelper = new SQLiteHelper(this);
+
+
         //-------------------------------- Media Player Settings ---------------------------------//
 
         int tmpId =idParser("t_01");

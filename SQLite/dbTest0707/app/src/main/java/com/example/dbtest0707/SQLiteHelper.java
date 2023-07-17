@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
 
@@ -152,17 +153,30 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db;
     }
+    //------------------------------------- MUSIC INFORMATION QUERY ------------------------------//
+    public ArrayList<MusicDTO> musicInfo(){
 
-    public boolean selectOne(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String sql = "select * from " + TABLE_NAME + " where "+ COLUMN_ID + " = '" + "test" + "' and " + COLUMN_PW + " = '" + "test" +"'";
-        Cursor cursor = db.rawQuery(sql,null);
-        if (cursor != null){
-            return true;
-        }else{
-            return false;
+        String sql = "select * from mp_info";
+        ArrayList<MusicDTO> allMusic = new ArrayList<MusicDTO>();
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(sql,null);
+            if(cursor.getCount()>0){
+                for(int i=0; i<cursor.getCount(); i++){
+                    int musicIdx = cursor.getInt(0);
+                    String musicName = cursor.getString(1);
+                    String musicAnswer = cursor.getString(2);
+                    MusicDTO music = new MusicDTO(musicIdx,musicName,musicAnswer);
+                    allMusic.add(music);
+
+                }
+            }
+        }catch (Exception e){
+            Log.v("SQLiteHelper", "Musicinfo Error");
+            return null;
         }
 
+    return allMusic;
     }
 
 }
