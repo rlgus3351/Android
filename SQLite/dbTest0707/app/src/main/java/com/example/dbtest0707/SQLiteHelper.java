@@ -30,7 +30,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public static final String COLUMN_DATE = "date";
     private static String DB_PATH = "";
-    // TODO : assets 폴더에 있는 DB명 또는 별도의 데이터베이스 파일이름
     private Context mContext;
     private static SQLiteDatabase mDataBase;
     private static final String DATABASE_CREATE_TABLE = "create table "
@@ -48,39 +47,52 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         this.mContext = context;
         dataBaseCheck();
     }
-
+    //------------------------------------ DATABASES FOLDERS FILE CHECK -------------------------//
     private void dataBaseCheck(){
+        // 해당 폴더(경로 : DATABASES 폴더 하위에 DATABASE_NAME과 같은 데이터베이스가 있는지 체크
         File dbFile = new File(DB_PATH + DATABASE_NAME);
         if(!dbFile.exists()){
+            // 파일이 존재 하지 않을 때 dbCopy 메소드를 실행
             dpCopy();
+            // 복사 완료후 Log로 확인
             Log.v("DataBaseHelper","DataBase is Copied");
         }
     }
+    //------------------------------------ DATABASES COPY METHOD ---------------------------------//
     private void dpCopy(){
+        // 예외 처리로 파일을 복사하자 파일 관련해서 소스 코드 처리할 땐 예외 처리 구문을 활용
         try{
+            // 어플, 기기 폴더 (Device File Explorer) 아래 data/data/databases 폴더에 접근
             File folder = new File(DB_PATH);
+            // 해당 경로에 폴더가 없으면 폴더 생성
             if(!folder.exists()){
+                // 폴더 만들기 메소드
                 folder.mkdir();
             }
 
+            // InputStream -> 바이트의 입력 스트림을 나타내는 최상위 클래스
             InputStream inputStream = mContext.getAssets().open(DATABASE_NAME);
+            // databases위치 -> /data/data/com.example.project명/databases/데이터베이스이름으로 저장하기 위해서 변수 설정
             String out_filename = DB_PATH + DATABASE_NAME;
+            // OutputStream -> 바이트의 출력 스트림을 나타내는 최상위 클래스
             OutputStream outputStream = new FileOutputStream(out_filename);
+            // file을 읽고 출력하는데 1024byte로 읽어서 1Kb씩 저장하도록 만들며
             byte[] mBuffer = new byte[1024];
             int mLength;
+            // 입력 스트림의 읽은 byte의 값이 0 작으면 : 파일 복사 완료 -> 조건문
             while((mLength = inputStream.read(mBuffer)) > 0){
+                // outputStream.write 기능으로 읽어온 byte를 써준다.
                 outputStream.write(mBuffer,0,mLength);
             }
+            // 스트림 버퍼에 있는 데이터 강제적으로 출력
             outputStream.flush();
+            // 사용한 입,출력 스트림 닫아주기
             outputStream.close();
             inputStream.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
-
-
 
     //------------------------------------- CREATE TABLE -----------------------------------------//
 
@@ -166,7 +178,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                     int musicIdx = cursor.getInt(0);
                     String musicName = cursor.getString(1);
                     String musicAnswer = cursor.getString(2);
-                    MusicDTO music = new MusicDTO(musicIdx,musicName,musicAnswer);
+                    MusicDTO music = new MusicDTO(musicName,musicAnswer);
                     allMusic.add(music);
 
                 }

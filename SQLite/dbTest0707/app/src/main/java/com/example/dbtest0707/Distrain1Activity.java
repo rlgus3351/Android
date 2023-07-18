@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -30,8 +30,12 @@ public class Distrain1Activity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
 
     SQLiteHelper mSQLiteHelper;
-
+    SQLiteControl SQLiteControl;
+    ArrayList<MusicDTO> mList;
     int i = 0;
+
+    int fileid = 0;
+    int index = 0;
     boolean visiblePb = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +43,17 @@ public class Distrain1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_distrain1);
         //-------------------------------- Music Info Settings ---------------------------------//
         mSQLiteHelper = new SQLiteHelper(this);
-
+        SQLiteControl = new SQLiteControl(mSQLiteHelper);
+        mList = SQLiteControl.musicList();
+        if(mList.size()>0){
+            Log.v("Music List size" ,"value : " + mList.size());
+            fileid = idParser(mList.get(0).getMp_name());
+        }else{
+            Log.v("Music List size" ,"value : " + 0);
+        }
 
         //-------------------------------- Media Player Settings ---------------------------------//
+
 
         int tmpId =idParser("t_01");
         Log.v("raw file ID" ,"value : " + tmpId);
@@ -62,7 +74,7 @@ public class Distrain1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 progressbar.setVisibility(View.VISIBLE); // Progressbar 시각기능 o
                 visiblePb = true;
-                mediaPlayer = MediaPlayer.create(Distrain1Activity.this, tmpId);
+                mediaPlayer = MediaPlayer.create(Distrain1Activity.this, fileid);
                 mediaPlayer.start();
             }
         });
@@ -72,16 +84,18 @@ public class Distrain1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(visiblePb){
+                    if(index==(mList.size()-1)){
+                        i = 100;
+                        progressbar.setProgress(i);
+                    }
                     if(i<100){
-                        i+=10;
-                        count++;
-                        mediaPlayer.stop();
-                        mediaPlayer.release();
-                        int id = idParser(file_temp[count]);
-                        Log.v("next Music" ,"value : " + id);
-                        Log.v("Click Value" ," : O ");
-                        mediaPlayer =MediaPlayer.create(Distrain1Activity.this, id);
-                        mediaPlayer.start();
+
+                        int i1 = 100 / mList.size();
+                        i+= i1;
+                        if(index<mList.size()){
+                            index++;
+                            musicPlay(index);
+                        }
                         answer.add("O");
                     }
                     if (progressbar.getProgress()>=100){
@@ -103,16 +117,17 @@ public class Distrain1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(visiblePb){
+                    if(index==(mList.size()-1)){
+                        i = 100;
+                        progressbar.setProgress(i);
+                    }
                     if(i<100){
-                        i+=10;
-                        count++;
-                        mediaPlayer.stop();
-                        mediaPlayer.release();
-                        int id = idParser(file_temp[count]);
-                        Log.v("next Music" ,"value : " + id);
-                        Log.v("Click Value" ," : X ");
-                        mediaPlayer =MediaPlayer.create(Distrain1Activity.this, id);
-                        mediaPlayer.start();
+                        int i1 = 100 / mList.size();
+                        i+= i1;
+                        if(index<mList.size()){
+                            index++;
+                            musicPlay(index);
+                        }
                         answer.add("X");
                     }
                     if (progressbar.getProgress()==100){
@@ -145,4 +160,14 @@ public class Distrain1Activity extends AppCompatActivity {
                 name,"raw",packagename);
         return temp;
     }
+    private void musicPlay(int id){
+        mediaPlayer.stop();
+        mediaPlayer.release();
+        id = idParser(mList.get(index).getMp_name());
+        mediaPlayer =MediaPlayer.create(Distrain1Activity.this, id);
+        Log.v("next Music" ,"value : " + id);
+        Log.v("Click Value" ," : index value :  " + index);
+        mediaPlayer.start();
+    }
+
 }

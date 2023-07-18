@@ -8,8 +8,8 @@ public class MusicDTO {
     public MusicDTO(){
 
     }
-    public MusicDTO(int mp_idx, String mp_name, String mp_answer) {
-        this.mp_idx = mp_idx;
+
+    public MusicDTO(String mp_name, String mp_answer) {
         this.mp_name = mp_name;
         this.mp_answer = mp_answer;
     }
