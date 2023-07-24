@@ -75,7 +75,9 @@
                     android:layout_marginBottom="10dp"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@drawable/headset_solid"></ImageButton>
+                    android:background="@drawable/headset_solid">
+
+                </ImageButton>
                 <TextView
                     android:layout_gravity="center"
                     android:layout_width="120dp"
