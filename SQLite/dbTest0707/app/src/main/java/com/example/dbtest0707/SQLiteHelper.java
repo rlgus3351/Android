@@ -166,29 +166,29 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return db;
     }
     //------------------------------------- MUSIC INFORMATION QUERY ------------------------------//
-//    public ArrayList<MusicDTO> musicInfo(){
-//
-//        String sql = "select * from mp_info";
-//        ArrayList<MusicDTO> allMusic = new ArrayList<MusicDTO>();
-//        try{
-//            SQLiteDatabase db = this.getWritableDatabase();
-//            Cursor cursor = db.rawQuery(sql,null);
-//            if(cursor.getCount()>0){
-//                for(int i=0; i<cursor.getCount(); i++){
-//                    int musicIdx = cursor.getInt(0);
-//                    String musicName = cursor.getString(1);
-//                    String musicAnswer = cursor.getString(2);
-//                    MusicDTO music = new MusicDTO(musicName,musicAnswer);
-//                    allMusic.add(music);
-//
-//                }
-//            }
-//        }catch (Exception e){
-//            Log.v("SQLiteHelper", "Musicinfo Error");
-//            return null;
-//        }
-//
-//    return allMusic;
+    public ArrayList<MusicDTO> musicInfo(){
+
+        String sql = "select * from mp_info";
+        ArrayList<MusicDTO> allMusic = new ArrayList<MusicDTO>();
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(sql,null);
+            if(cursor.getCount()>0){
+                for(int i=0; i<cursor.getCount(); i++){
+                    int musicIdx = cursor.getInt(0);
+                    String musicName = cursor.getString(1);
+                    String musicAnswer = cursor.getString(2);
+                    MusicDTO music = new MusicDTO(musicName,musicAnswer);
+                    allMusic.add(music);
+
+                }
+            }
+        }catch (Exception e){
+            Log.v("SQLiteHelper", "Musicinfo Error");
+            return null;
+        }
+
+    return allMusic;
     }
 
 }

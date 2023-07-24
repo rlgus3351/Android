@@ -1,0 +1,35 @@
+package com.example.aiaudiometry;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+    Button joinBtn;
+    Button loginBtn;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        joinBtn = findViewById(R.id.joinBtn);
+        loginBtn = findViewById(R.id.loginBtn);
+        joinBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), TestActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
