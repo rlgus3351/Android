@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".speechTest">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="31dp"
+        android:orientation="vertical"
+        android:padding="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="어음 청치 역치 테스트"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="25sp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="(왼쪽)"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="20sp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="테스트에 앞서 원활한 진행을 위해서
+            편안하게 들리는 소리로 조절해주세요.
+            헤드셋이나 이어폰 착용을 권장드립니다."
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"></TextView>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/headphones"></ImageView>
+        <ImageButton
+            android:id="@+id/speechTestPlayPause"
+            android:layout_width="50dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/play">
+        </ImageButton>
+        <LinearLayout
+            android:id="@+id/plusminusLayout"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:layout_marginRight="150dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/minus"></ImageButton>
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/plus"></ImageButton>
+        </LinearLayout>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:text="테스트 시작"
+            android:textSize="18sp"
+            android:background="@drawable/custom_button"
+            android:textColor="@color/white"
+            android:layout_gravity="center"></Button>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

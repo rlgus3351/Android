@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type">
+        <item>어음 청취 역치 테스트</item>
+        <item>단어 인지도 테스트</item>
+        <item>문장 인지도 테스트</item>
+    </string-array>
+</resources>

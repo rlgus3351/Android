@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".speechTestMenu">
@@ -16,20 +17,70 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
+        app:layout_constraintVertical_bias="0.0" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        android:layout_height="550dp"
+        android:layout_marginTop="31dp"
+        android:orientation="vertical"
+        android:padding="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="어음 청력 테스트"
-            android:textSize="25sp"
-
             android:textColor="@color/black"
-            />
+            android:textSize="30sp"></TextView>
 
+        <TextView
+            android:id="@+id/trainshape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="어음 청력 테스트구별"
+            android:textColor="@color/black"
+            android:textSize="25sp"></TextView>
+
+        <Spinner
+            android:id="@+id/typeSpn"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:spinnerMode="dropdown"
+            android:scrollbars="vertical"
+            android:background="@drawable/edit_background"
+            android:layout_marginTop="20dp">
+        </Spinner>
+
+        <TextView
+            android:id="@+id/testContentBox"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            android:padding="30dp"
+            android:layout_width="300dp"
+            android:layout_height="200dp"></TextView>
+        <Button
+            android:id="@+id/speechTestBtn"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_button"
+            android:layout_marginTop="20dp"
+            android:text="테스트 시작"
+            android:textColor="@color/white"
+            android:textSize="20sp"></Button>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

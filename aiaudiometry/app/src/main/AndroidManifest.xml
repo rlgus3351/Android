@@ -13,13 +13,13 @@
         android:theme="@style/Theme.Aiaudiometry"
         tools:targetApi="33">
         <activity
+            android:name=".speechTest"
+            android:exported="false" />
+        <activity
             android:name=".speechTestMenu"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TestActivity"
             android:exported="false" />
         <activity
             android:name=".JoinActivity"

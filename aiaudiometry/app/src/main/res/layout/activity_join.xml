@@ -83,7 +83,6 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-
         <Spinner
             android:id="@+id/genderSpn"
             android:layout_width="match_parent"
@@ -93,6 +92,7 @@
             android:layout_marginTop="10dp"
             android:spinnerMode="dropdown"
             android:background="@drawable/edit_background" />
+
 
         <TextView
             android:id="@+id/jointextViewBrithDate"
@@ -105,15 +105,15 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/EditPw"
+            android:id="@+id/joinEditBirth"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/edit_background"
-            android:hint="생년월일을 입력하세요."
+            android:hint="생년월일을 입력하세요. ex(980928)"
             android:inputType="text"
             android:padding="12dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
         <Button
             android:id="@+id/joinBtn"
