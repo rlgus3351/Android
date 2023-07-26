@@ -105,6 +105,7 @@
                 android:background="@drawable/box_layout"
                 android:padding="5dp">
                 <ImageButton
+                    android:id="@+id/stResultListBtn"
                     android:contentDescription="no"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"

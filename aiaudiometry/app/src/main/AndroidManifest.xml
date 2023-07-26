@@ -13,6 +13,15 @@
         android:theme="@style/Theme.Aiaudiometry"
         tools:targetApi="33">
         <activity
+            android:name=".StResultList"
+            android:exported="false" />
+        <activity
+            android:name=".StResult"
+            android:exported="false" />
+        <activity
+            android:name=".speechTestMain"
+            android:exported="false" />
+        <activity
             android:name=".speechTest"
             android:exported="false" />
         <activity

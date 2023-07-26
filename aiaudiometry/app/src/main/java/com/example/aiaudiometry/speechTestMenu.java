@@ -62,9 +62,13 @@ public class speechTestMenu extends AppCompatActivity {
         speechTestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.v("검사 시작 버튼" ,"클릭");
                 Intent intent = new Intent(getApplicationContext(), speechTest.class);
+                Log.v("검사 시작 버튼" ,"클릭2");
                 intent.putExtra("type", typeSpnVal);
+                Log.v("검사 시작 버튼" ,"클릭3");
                 startActivity(intent);
+                Log.v("검사 시작 버튼" ,"클릭4");
             }
         });
 
